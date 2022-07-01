@@ -1,6 +1,8 @@
 package io.zipcoder;
 
 
+import java.util.Arrays;
+
 /**
  * @author tariq
  */
@@ -15,7 +17,28 @@ public class StringsAndThings {
      *           countYZ("day fyyyz"); // Should return 2
      */
     public Integer countYZ(String input){
-        return null;
+        //count words if length-1 is y or z
+        //input.endsWith("y" && "z")
+        //charAt(length-1)
+        //regex (regular expression): searches a pattern provided.
+        //Given a string of words, split it by the regex, in this case a space.
+        //Declare a String[] variable named words, and then initialize it by splitting the input at regex.
+        //when you split a string, it will split into one array.
+        //a split will always need a regex.
+        //because we want to return the result of countYZ as an Integer, we make an int variable.
+        //words.length is the size of the array, in this case 2 because of "fez" and "day" given input is "fez day".
+
+        String[] words = input.split(" ");
+        int count = 0;
+        for(int i = 0; i < words.length; i++) {
+            //if array named words at index i ends with "y" or "z", run the body.
+            //in this case count variable increase by 1.
+            if(words[i].endsWith("y") || words[i].endsWith("z")) {
+                count++;
+            }
+        }
+        return count;
+
     }
 
     /**
@@ -28,7 +51,8 @@ public class StringsAndThings {
      *           removeString("Hello there", "x") // Should return "Hello there"
      */
     public String removeString(String base, String remove){
-        return null;
+
+        return base.replace(remove,"");
     }
 
     /**
@@ -40,7 +64,27 @@ public class StringsAndThings {
      *           containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
      */
     public Boolean containsEqualNumberOfIsAndNot(String input){
-        return null;
+        boolean equalsOrNot;
+        int isCount = (input.split("is", -1).length-1);
+        int notCount = (input.split("not", -1).length-1);
+
+        return isCount == notCount;
+//        int isCounter = 0;
+//        int notCounter = 0;
+//
+//        for (int i = 0; i < input.length() - 1; i++) {
+//            if (input.charAt(i) == 'i' && input.charAt(i + 1) == 's') {
+//                isCounter++;
+//            }
+//        }
+//
+//        for (int i = 0; i < input.length() - 2; i++) {
+//            if (input.charAt(i) == 'n' && input.charAt(i + 1) == 'o' && input.charAt(i + 2) == 't') {
+//                notCounter++;
+//            }
+//        }
+//
+//        return isCounter == notCounter;
     }
 
     /**
@@ -51,7 +95,14 @@ public class StringsAndThings {
      *           gHappy("xxggyygxx") // Should return  false
      */
     public Boolean gIsHappy(String input){
-        return null;
+        //length-1, because if g was at the end of the string, the condition is to check next letter.
+        //but it can't, so it will return an error for index out of bound.
+        for (int i = 0; i < input.length()-1; i++) {
+            if (input.charAt(i) == 'g' && input.charAt(i + 1) == 'g') {
+                return true;
+            }
+        }
+        return false;
     }
 
 
@@ -63,6 +114,11 @@ public class StringsAndThings {
      *            countTriple("a") // Should return 0
      */
     public Integer countTriple(String input){
-        return null;
+        int count = 0;
+        for(int i = 0; i <= input.length() - 3; i++) {
+            if(input.charAt(i) == input.charAt(i+1) && input.charAt(i) == input.charAt(i+2))
+                count++;
+        }
+        return count;
     }
 }

@@ -19,8 +19,8 @@ public class ContainsEqualNumberOfIsAndNotTest {
 
     @Test
     public void equalIsNotTest1(){
-        Boolean actual = stringsAndThings.containsEqualNumberOfIsAndNot("This is not");
-        Assert.assertFalse(actual);
+        Boolean actual = stringsAndThings.containsEqualNumberOfIsAndNot("This is not not not is");
+        Assert.assertTrue(actual);
     }
 
     @Test
